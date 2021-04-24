@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">LoL Team Statistics</a>
+        <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Create Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Summoners</a>
+          </li>
+        </ul>
+
+        <div class="dropdown" *ngIf="loggedIn" dropdown>
+          <a class="dropdown-toggle text-light" dropdownToggle>Welcome Summoner</a>
+          <div class="dropdown-menu mt-3" *bsDropdownMenu>
+            <a class="dropdown-item">Edit Teams</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </div>
+
+        <form *ngIf="!loggedIn" #loginform="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
+            <input 
+            name="username"
+            [(ngModel)]="model.username"
+            class="form-control me-2" 
+            type="text" 
+            placeholder="Username">
+            <input
+            name="Password"
+            [(ngModel)]="model.password" 
+            class="form-control me-2" 
+            type="password" 
+            placeholder="Password">
+            <button class="btn btn-outline-success" type="submit">Login</button>
+          </form>
+    </div>
+  </nav>
