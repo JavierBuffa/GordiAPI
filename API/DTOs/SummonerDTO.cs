@@ -12,8 +12,7 @@ namespace API.DTOs
         public string PuuId { get; set; }
         public string Name { get; set; }
         public int ProfileIconId { get; set; }
-       // [JsonConverter(typeof(DateTimeConverter))]
-       // public Int64 RevisionDate { get; set; }
+        public DateTime RevisionDate { get; set; }
         public int SummonerLevel { get; set; }
         
     }
