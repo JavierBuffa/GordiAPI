@@ -1,20 +1,20 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">LoL Team Statistics</a>
-        <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Create Team</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Summoners</a>
-          </li>
+      <a class="navbar-brand" routerLink="/" >LoL Team Statistics</a>
+
+        <ul class="navbar-nav mr-auto">
+          <ng-container  *ngIf="accountService.currentUser$| async" >
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/teams' routerLinkActive='active'>Create Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/summoners' routerLinkActive='active'>Summoners</a>
+            </li>
+          </ng-container>
         </ul>
 
-        <div class="dropdown" *ngIf="accountService.currentUser$| async" dropdown>
-          <a class="dropdown-toggle text-light" dropdownToggle>Welcome Summoner</a>
+        <div class="dropdown" *ngIf="(accountService.currentUser$| async) as user" dropdown>
+          <a class="dropdown-toggle text-white" dropdownToggle>Welcome {{user.username | titlecase}}</a>
           <div class="dropdown-menu mt-3" *bsDropdownMenu>
             <a class="dropdown-item">Edit Teams</a>
             <div class="dropdown-divider"></div>
