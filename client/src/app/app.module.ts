@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { SummonersListComponent } from './summoners/summoners-list/summoners-lis
 import { SummonersDetailComponent } from './summoners/summoners-detail/summoners-detail.component';
 import { TeamsComponent } from './teams/teams.component';
 import { SharedModule } from './_modules/shared.module';
+import { TestsErrorsComponent } from './errors/tests-errors/tests-errors.component';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { SharedModule } from './_modules/shared.module';
     RegisterComponent,
     SummonersListComponent,
     SummonersDetailComponent,
-    TeamsComponent
+    TeamsComponent,
+    TestsErrorsComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,9 @@ import { SharedModule } from './_modules/shared.module';
     FormsModule,
     SharedModule   
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

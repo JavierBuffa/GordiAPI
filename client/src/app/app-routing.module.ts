@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TestsErrorsComponent } from './errors/tests-errors/tests-errors.component';
 import { HomeComponent } from './home/home.component';
 import { SummonersDetailComponent } from './summoners/summoners-detail/summoners-detail.component';
 import { SummonersListComponent } from './summoners/summoners-list/summoners-list.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       {path: 'teams', component: TeamsComponent},
     ]
   },
+  {path: 'errors', component: TestsErrorsComponent},
   {path: '**', component: TeamsComponent, pathMatch: 'full'},
 ];
 
