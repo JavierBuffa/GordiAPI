@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       this.cancel();
     }, error => {
       console.log(error);
-      this.toastr.error(error.error);
+      this.toastr.error(error.error, error.statusText = "Password must be 4 to 10 characters");
     })
   }
 

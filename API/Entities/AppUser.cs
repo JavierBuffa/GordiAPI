@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace API.Entities
 {
     public class AppUser
@@ -8,5 +11,11 @@ namespace API.Entities
         public byte[] PasswordHash { get; set; }
 
         public byte[] PasswordSalt { get; set; }
+
+        public RegionList Region { get; set; }
+
+        public DateTime LastActive { get; set; } = DateTime.Now;
+
+        public ICollection<Photo> ProfilePhoto { get; set; }
     }
 }

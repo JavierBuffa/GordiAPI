@@ -1,0 +1,57 @@
+[
+    {
+      "UserName": "Ramona",
+      "LastActive": "2020-06-12",
+      "Region": 2,
+      "Photos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/8.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "UserName": "Holly",
+      "LastActive": "2020-06-26",
+      "Region": 3,
+      "Photos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/81.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "UserName": "Janie",
+      "LastActive": "2020-05-10",
+      "Region": 1,
+      "Photos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/47.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "UserName": "Jamie",
+      "LastActive": "2020-06-02",
+      "Region": 1,
+      "Photos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/66.jpg",
+          "IsMain": true
+        }
+      ]
+    },
+    {
+      "UserName": "Bobbi",
+      "LastActive": "2020-05-02",
+      "Region": 3,
+      "Photos": [
+        {
+          "Url": "https://randomuser.me/api/portraits/42.jpg",
+          "IsMain": true
+        }
+      ]
+    }
+  ]
