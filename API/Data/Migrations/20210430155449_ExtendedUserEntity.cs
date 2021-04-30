@@ -22,21 +22,21 @@ namespace API.Data.Migrations
                 defaultValue: 0);
 
             migrationBuilder.CreateTable(
-                name: "Profile Image",
+                name: "ProfileImage",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    URL = table.Column<string>(type: "TEXT", nullable: true),
+                    Url = table.Column<string>(type: "TEXT", nullable: true),
                     IsMain = table.Column<bool>(type: "INTEGER", nullable: false),
                     PublicId = table.Column<string>(type: "TEXT", nullable: true),
                     AppUserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Profile Image", x => x.Id);
+                    table.PrimaryKey("PK_ProfileImage", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Profile Image_Users_AppUserId",
+                        name: "FK_ProfileImage_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -44,15 +44,15 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Profile Image_AppUserId",
-                table: "Profile Image",
+                name: "IX_ProfileImage_AppUserId",
+                table: "ProfileImage",
                 column: "AppUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Profile Image");
+                name: "ProfileImage");
 
             migrationBuilder.DropColumn(
                 name: "LastActive",

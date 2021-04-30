@@ -57,14 +57,14 @@ namespace API.Data.Migrations
                     b.Property<string>("PublicId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("URL")
+                    b.Property<string>("Url")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Profile Image");
+                    b.ToTable("ProfileImage");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
