@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210512182529_MemberRito2")]
+    partial class MemberRito2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,12 +87,12 @@ namespace API.Data.Migrations
                     b.Property<int>("SummonerLevel")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UserTeamId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserTeamId");
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Members");
                 });
@@ -122,9 +124,11 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.TeamMember", b =>
                 {
-                    b.HasOne("API.Entities.UserTeam", null)
+                    b.HasOne("API.Entities.UserTeam", "Team")
                         .WithMany("Members")
-                        .HasForeignKey("UserTeamId");
+                        .HasForeignKey("TeamId");
+
+                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>

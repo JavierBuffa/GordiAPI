@@ -10,14 +10,15 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { SummonersListComponent } from './summoners/summoners-list/summoners-list.component';
-import { SummonersDetailComponent } from './summoners/summoners-detail/summoners-detail.component';
 import { TeamsComponent } from './teams/teams.component';
 import { SharedModule } from './_modules/shared.module';
 import { TestsErrorsComponent } from './errors/tests-errors/tests-errors.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { NewTeamComponent } from './teams/new-team/new-team.component';
+import { teamRegisterResolver } from './_resolver/teamRegisterResolver';
+import { SummonersComponent } from './summoners/summoners/summoners.component';
 
 
 @NgModule({
@@ -26,12 +27,12 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    SummonersListComponent,
-    SummonersDetailComponent,
     TeamsComponent,
     TestsErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    NewTeamComponent,
+    SummonersComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +44,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     SharedModule   
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    teamRegisterResolver
   ],
   bootstrap: [AppComponent]
 })

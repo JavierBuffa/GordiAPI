@@ -17,6 +17,6 @@ namespace API.Entities
 
         public DateTime LastActive { get; set; } = DateTime.Now;
 
-        public ICollection<Photo> ProfilePhoto { get; set; }
+        public ICollection<Photo> ProfilePhotos { get; set; }
     }
 }

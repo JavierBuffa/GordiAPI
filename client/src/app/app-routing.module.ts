@@ -6,8 +6,10 @@ import { TestsErrorsComponent } from './errors/tests-errors/tests-errors.compone
 import { HomeComponent } from './home/home.component';
 import { SummonersDetailComponent } from './summoners/summoners-detail/summoners-detail.component';
 import { SummonersListComponent } from './summoners/summoners-list/summoners-list.component';
+import { NewTeamComponent } from './teams/new-team/new-team.component';
 import { TeamsComponent } from './teams/teams.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { teamRegisterResolver } from './_resolver/teamRegisterResolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +21,8 @@ const routes: Routes = [
       {path: 'summoners', component: SummonersListComponent, canActivate: [AuthGuard]},
       {path: 'summoners/:id', component: SummonersDetailComponent},
       {path: 'teams', component: TeamsComponent},
+      {path: 'newteam/edit/:id', component: NewTeamComponent, resolve: {team: teamRegisterResolver}},
+      {path: 'newteam', component: NewTeamComponent},
     ]
   },
   {path: 'errors', component: TestsErrorsComponent},

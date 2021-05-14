@@ -11,5 +11,7 @@ namespace API.Data
 
 
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<UserTeam> Teams { get; set; }
+        public DbSet<TeamMember> Members { get; set; }
     }
 }

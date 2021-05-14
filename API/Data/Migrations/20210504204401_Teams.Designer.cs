@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210430155449_ExtendedUserEntity")]
-    partial class ExtendedUserEntity
+    [Migration("20210504204401_Teams")]
+    partial class Teams
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,13 +66,45 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("ProfileImage");
+                    b.ToTable("ProfilePhotos");
+                });
+
+            modelBuilder.Entity("API.Entities.TeamMembers", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("UserTeamId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserTeamId");
+
+                    b.ToTable("TeamMembers");
+                });
+
+            modelBuilder.Entity("API.Entities.UserTeam", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("TeamName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("ProfilePhoto")
+                        .WithMany("ProfilePhotos")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -80,9 +112,21 @@ namespace API.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.TeamMembers", b =>
+                {
+                    b.HasOne("API.Entities.UserTeam", null)
+                        .WithMany("Members")
+                        .HasForeignKey("UserTeamId");
+                });
+
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
-                    b.Navigation("ProfilePhoto");
+                    b.Navigation("ProfilePhotos");
+                });
+
+            modelBuilder.Entity("API.Entities.UserTeam", b =>
+                {
+                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

@@ -28,14 +28,14 @@ namespace API.Data
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
             return await _context.Users
-            .Include(p => p.ProfilePhoto)
+            .Include(p => p.ProfilePhotos)
             .SingleOrDefaultAsync(x => x.UserName == username);
         }
 
         public async Task<IEnumerable<AppUser>> GetUserAsync()
         {
             return await _context.Users
-            .Include(p => p.ProfilePhoto)
+            .Include(p => p.ProfilePhotos)
             .ToListAsync();
         }
 

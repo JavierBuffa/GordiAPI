@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210504153056_ExtendedUserEntity")]
+    partial class ExtendedUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,48 +69,6 @@ namespace API.Data.Migrations
                     b.ToTable("ProfilePhotos");
                 });
 
-            modelBuilder.Entity("API.Entities.TeamMember", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("IdSummoner")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SummonerLevel")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("UserTeamId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserTeamId");
-
-                    b.ToTable("Members");
-                });
-
-            modelBuilder.Entity("API.Entities.UserTeam", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("TeamName")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teams");
-                });
-
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -120,21 +80,9 @@ namespace API.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("API.Entities.TeamMember", b =>
-                {
-                    b.HasOne("API.Entities.UserTeam", null)
-                        .WithMany("Members")
-                        .HasForeignKey("UserTeamId");
-                });
-
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
                     b.Navigation("ProfilePhotos");
-                });
-
-            modelBuilder.Entity("API.Entities.UserTeam", b =>
-                {
-                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

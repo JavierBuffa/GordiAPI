@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210512125705_TeamMember")]
+    partial class TeamMember
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,11 +71,7 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.TeamMember", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("IdSummoner")
+                    b.Property<string>("id")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -88,11 +86,11 @@ namespace API.Data.Migrations
                     b.Property<int?>("UserTeamId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("UserTeamId");
 
-                    b.ToTable("Members");
+                    b.ToTable("TeamMember");
                 });
 
             modelBuilder.Entity("API.Entities.UserTeam", b =>

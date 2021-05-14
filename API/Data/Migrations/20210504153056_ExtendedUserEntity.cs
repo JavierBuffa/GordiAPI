@@ -22,7 +22,7 @@ namespace API.Data.Migrations
                 defaultValue: 0);
 
             migrationBuilder.CreateTable(
-                name: "ProfileImage",
+                name: "ProfilePhotos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -34,9 +34,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfileImage", x => x.Id);
+                    table.PrimaryKey("PK_ProfilePhotos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfileImage_Users_AppUserId",
+                        name: "FK_ProfilePhotos_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -44,15 +44,15 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfileImage_AppUserId",
-                table: "ProfileImage",
+                name: "IX_ProfilePhotos_AppUserId",
+                table: "ProfilePhotos",
                 column: "AppUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProfileImage");
+                name: "ProfilePhotos");
 
             migrationBuilder.DropColumn(
                 name: "LastActive",

@@ -1,0 +1,10 @@
+<form #newTeamFrom="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="updateTeam()">
+    <label for="teamName" class="mr-2">Insert your team name</label>
+    <input 
+        name="teamName"
+        [(ngModel)]="model.teamName"
+        class="form-control me-2" 
+        type="text" 
+        placeholder="Team Name">
+        <button class="btn btn-success ml-2" type="submit" >Save Team</button>
+</form>
