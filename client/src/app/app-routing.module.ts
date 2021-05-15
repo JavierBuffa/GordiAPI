@@ -4,8 +4,6 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestsErrorsComponent } from './errors/tests-errors/tests-errors.component';
 import { HomeComponent } from './home/home.component';
-import { SummonersDetailComponent } from './summoners/summoners-detail/summoners-detail.component';
-import { SummonersListComponent } from './summoners/summoners-list/summoners-list.component';
 import { NewTeamComponent } from './teams/new-team/new-team.component';
 import { TeamsComponent } from './teams/teams.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -18,8 +16,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      {path: 'summoners', component: SummonersListComponent, canActivate: [AuthGuard]},
-      {path: 'summoners/:id', component: SummonersDetailComponent},
+      
       {path: 'teams', component: TeamsComponent},
       {path: 'newteam/edit/:id', component: NewTeamComponent, resolve: {team: teamRegisterResolver}},
       {path: 'newteam', component: NewTeamComponent},

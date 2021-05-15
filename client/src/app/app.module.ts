@@ -19,6 +19,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { NewTeamComponent } from './teams/new-team/new-team.component';
 import { teamRegisterResolver } from './_resolver/teamRegisterResolver';
 import { SummonersComponent } from './summoners/summoners/summoners.component';
+import { TeamdetailsComponent } from './teams/teamdetails/teamdetails.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SummonersComponent } from './summoners/summoners/summoners.component';
     NotFoundComponent,
     ServerErrorComponent,
     NewTeamComponent,
-    SummonersComponent
+    SummonersComponent,
+    TeamdetailsComponent
   ],
   imports: [
     CommonModule,

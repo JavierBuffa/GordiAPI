@@ -19,7 +19,7 @@
               <td>{{team.teamName}}</td>
               <td>
                 <ul class="list-inline member-icons">
-                  <!-- <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/newteam/']"><i class="fa fa-search"></i></button></li> -->
+                  <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-search"></i></button></li>
                   <li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/newteam/edit', team.id]"><i class="fa fa-edit"></i></button></li>
                   <li class="list-inline-item"><button class="btn btn-danger" (click)="deleteTeam(team.id)"><i class="fa fa-trash"></i></button></li>
                 </ul>
